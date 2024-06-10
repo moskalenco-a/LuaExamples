@@ -1,78 +1,68 @@
--- Running code:
--- lua 00-types.lua
-
 -- Demonstating Lua types
--- 'a .. b' is used to concat strings (like in PHP) instead of 'a + b'
--- returning value of function 'type' is string
+-- Running code: lua filename.lua
+
+local function print_value(value)
+  -- returning value of function 'type' is string
+  -- 'a .. b' is string concatenation like 'a + b' in JS
+  print(' Type: ' .. type(value))
+  -- most of types must be converted to string explicitly
+  -- only number can be converted to string implicitly
+  print('Value: ' .. tostring(value) .. '\n')
+end
+
+-----------------------------------------------------------------------
 
 -- Type: nil
 -- looks like null / undefined in JS
 -- nil must be converted to string explicitly
 local nil_value = nil
-print(' Type: ' .. type(nil_value));
-print('Value: ' .. tostring(nil_value));
-print();
+print_value(nil_value)
 
 -----------------------------------------------------------------------
 
 -- Type: boolean, like in JS
 -- boolean must be converted to string explicitly
-local flag = false;
-print(' Type: ' .. type(flag));
-print('Value: ' .. tostring(flag));
-print();
-
-flag = true;
-print(' Type: ' .. type(flag));
-print('Value: ' .. tostring(flag));
-print();
+local flag = false
+print_value(flag)
+flag = true
+print_value(flag)
 
 -----------------------------------------------------------------------
 
 -- Type: number, like in JS
 -- one type for both int and real numbers
-local int_num = 100;
-print(' Type: ' .. type(int_num));
-print('Value: ' .. int_num);
-print();
-
-local real_num = 2.18281828;
-print(' Type: ' .. type(real_num));
-print('Value: ' .. real_num);
-print();
+local int_num = 100
+print_value(int_num)
+local real_num = 2.18281828
+print_value(real_num)
 
 -----------------------------------------------------------------------
 
 -- Type: string
 -- Both '' and "" can be used in string literals
-local str = 'string1';
-print(' Type: ' .. type(str));
-print('Value: ' .. str);
-print();
-
-str = "string2";
-print(' Type: ' .. type(str));
-print('Value: ' .. str);
-print();
+local str = 'string1'
+print_value(str)
+str = "string2"
+print_value(str)
 
 -----------------------------------------------------------------------
 
 -- Type: table
 -- like JS 'object' with properties / fields
 -- but 'key = value' is used instead of 'key: value'
-local table = { login = 'admin', password = '12345678' };
-print(' Type: ' .. type(table));
+local user = {
+  login = 'admin',
+  password = '12345678'
+}
 -- something like address will be printed
 -- Value: table: 0x56227cba1a30 (for example)
-print('Value: ' .. tostring(table));
--- like in JS, two ways of accessing fields
--- object.field_name & obj['field_name'] both can be used
---    Login is: admin
--- Password is: 12345678
-print('   Login is: ' .. table.login);
-local field = 'password';
-print('Password is: ' .. table[field]);
-print();
+print_value(user)
+-- two ways of accessing fields, like in JS
+-- object.field_name & object[field_name_value]
+local pass = 'pass'
+print('   Login is: ' .. user.login)           -- admin
+print('Password is: ' .. user[pass .. 'word']) -- 12345678
+print()
 
 -----------------------------------------------------------------------
 
@@ -80,9 +70,8 @@ print();
 local f = function (x)
   return x * x
 end
-print(' Type: ' .. type(f));
 -- something like address will be printed
 -- Value: function: 0x5611c14e3c80 (for example)
-print('Value: ' .. tostring(f));
-print(' f(9): ' .. f(9));
-print();
+print_value(f)
+print(' f(9): ' .. f(9))
+print()
