@@ -3,6 +3,7 @@
 
 -- Demonstating Lua types
 -- 'a .. b' is used to concat strings (like in PHP) instead of 'a + b'
+-- returning value of function 'type' is string
 
 -- Type: nil
 -- looks like null / undefined in JS
@@ -66,6 +67,8 @@ print(' Type: ' .. type(table));
 print('Value: ' .. tostring(table));
 -- like in JS, two ways of accessing fields
 -- object.field_name & obj['field_name'] both can be used
+--    Login is: admin
+-- Password is: 12345678
 print('   Login is: ' .. table.login);
 local field = 'password';
 print('Password is: ' .. table[field]);
