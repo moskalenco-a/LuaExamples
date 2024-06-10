@@ -34,6 +34,6 @@ table.remove(langs, #langs) -- removing 'Haskell'
 -- 1. Go; 2. Lua; 3. Python
 -- ipairs used instead of pairs
 -- when iterating table as array
-for index, lang in pairs(langs) do
+for index, lang in ipairs(langs) do
   print(index .. '. ' .. lang)
 end
